@@ -63,6 +63,7 @@ namespace ProbGameOfCountingSimulator
             label_think.Text = "";
             lb_popytka.Text = "Попытка " + count + " из " + count_max;
 
+            // элементы try и catch - исключения, при выполнении этого блока, сначала выполняется действие в try, если исключение появится, то программа перейдет к действиям находящимся в catch
             try
             {
                 max = Convert.ToInt16(tBox_level.Text);
@@ -218,7 +219,7 @@ namespace ProbGameOfCountingSimulator
 
         private void button_Click(object sender, EventArgs e) // обработка нажатых кнопок скопом
         {
-            start((((Button)sender).Tag).ToString());
+            start(((Button)sender).Tag.ToString());
         }
 
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Schet));
             this.label_think = new System.Windows.Forms.Label();
             this.textBox_answer = new System.Windows.Forms.TextBox();
             this.pBar_time = new System.Windows.Forms.ProgressBar();
@@ -57,9 +58,8 @@
             // 
             this.textBox_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_answer.Location = new System.Drawing.Point(304, 40);
-            this.textBox_answer.Multiline = true;
             this.textBox_answer.Name = "textBox_answer";
-            this.textBox_answer.Size = new System.Drawing.Size(293, 66);
+            this.textBox_answer.Size = new System.Drawing.Size(293, 49);
             this.textBox_answer.TabIndex = 1;
             // 
             // pBar_time
@@ -77,11 +77,11 @@
             // lb_time
             // 
             this.lb_time.AutoSize = true;
-            this.lb_time.Location = new System.Drawing.Point(284, 113);
+            this.lb_time.Location = new System.Drawing.Point(285, 113);
             this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(26, 13);
+            this.lb_time.Size = new System.Drawing.Size(30, 13);
             this.lb_time.TabIndex = 11;
-            this.lb_time.Text = "time";
+            this.lb_time.Text = "Time";
             this.lb_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb_popytka
@@ -129,7 +129,7 @@
             this.bt_minus.Size = new System.Drawing.Size(142, 35);
             this.bt_minus.TabIndex = 4;
             this.bt_minus.Tag = "minus";
-            this.bt_minus.Text = "Сложение";
+            this.bt_minus.Text = "Вычитание";
             this.bt_minus.UseVisualStyleBackColor = true;
             // 
             // bt_mult
@@ -185,6 +185,7 @@
             this.Controls.Add(this.pBar_time);
             this.Controls.Add(this.textBox_answer);
             this.Controls.Add(this.label_think);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Schet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тренажер устного счета";
