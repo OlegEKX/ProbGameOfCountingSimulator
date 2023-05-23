@@ -14,6 +14,7 @@ namespace ProbGameOfCountingSimulator
     public partial class Form_Schet : Form
     {
         System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
+        int rightAnswer = 0;
         int count = 0; //количество попыток
         int min = 1;
         int i = 0; //для отображения секунд на форме
@@ -32,6 +33,7 @@ namespace ProbGameOfCountingSimulator
             InitializeComponent();
             tBox_level.Text = max.ToString();
             timer.Interval = 1000; // 1 секунда
+            
         }
 
         
@@ -78,50 +80,58 @@ namespace ProbGameOfCountingSimulator
 
         private void think()
         {
-            int a, b;
-            i = 0;
-            a = rnd.Next(min, max + 1);
-            b = rnd.Next(min, max + 1);
-
-            //на время запускаем счетчик
-
-            timer.Start();
-            t.Start();
-            pBar_time.Value = 0;
-
-
-
-            if (mode == "plus")
+            textBox_answer.Text = "";
+            textBox_answer.Focus();
+            if (count < count_max)
             {
-                label_think.Text = a.ToString() + " + " + b.ToString() + " = ";
-                answer = (a + b).ToString();
-            }
+                int a, b;
+                i = 0;
+                a = rnd.Next(min, max + 1);
+                b = rnd.Next(min, max + 1);
 
-            if (mode == "minus")
-            {
-                if (a < b) //чтобы не было отрицательных чисел, поменяем местами
+                //на время запускаем счетчик
+
+                timer.Start();
+                t.Start();
+                pBar_time.Value = 0;
+
+
+
+                if (mode == "plus")
                 {
-                    int x = a;
-                    a = b;
-                    b = x;
+                    label_think.Text = a.ToString() + " + " + b.ToString() + " = ";
+                    answer = (a + b).ToString();
                 }
-                label_think.Text = a.ToString() + " - " + b.ToString() + " = "; // - = ALT+0150 на цифровой
-                answer = (a - b).ToString();
-            }
 
-            if (mode == "mult")
-            {
-                label_think.Text = a.ToString() + " * " + b.ToString() + " = ";
-                answer = (a * b).ToString();
-            }
-            if (mode == "divs")
-            {
-                // можно так выпендриться, чтобы не использовать целочисленное деление
-                label_think.Text = (a * b).ToString() + " ; " + b.ToString() + " = ";
-                answer = a.ToString();
-            }
-            count++;
+                if (mode == "minus")
+                {
+                    if (a < b) //чтобы не было отрицательных чисел, поменяем местами
+                    {
+                        int x = a;
+                        a = b;
+                        b = x;
+                    }
+                    label_think.Text = a.ToString() + " - " + b.ToString() + " = "; // - = ALT+0150 на цифровой
+                    answer = (a - b).ToString();
+                }
 
+                if (mode == "mult")
+                {
+                    label_think.Text = a.ToString() + " * " + b.ToString() + " = ";
+                    answer = (a * b).ToString();
+                }
+                if (mode == "divs")
+                {
+                    // можно так выпендриться, чтобы не использовать целочисленное деление
+                    label_think.Text = (a * b).ToString() + " ; " + b.ToString() + " = ";
+                    answer = a.ToString();
+                }
+                
+            }
+            else
+            {
+                done();
+            }
 
         }
         private void game_over()
@@ -174,6 +184,37 @@ namespace ProbGameOfCountingSimulator
             done();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox_answer.Focus();
+            string result = textBox_answer.Text;
+            if (result == "")
+            {
+
+                MessageBox.Show(" ВВЕдит результат");
+            }
+            else
+            {
+                if (answer == result)
+                {
+                    //MessageBox.Show("Верно");
+                    rightAnswer++;
+
+                }
+                else
+                {
+                    //MessageBox.Show(" НЕ Верно");
+                }
+                count++;
+                think();
+            }
+        }
+
+        private void bt_plus_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             pBar_time.Increment(1);
@@ -213,13 +254,29 @@ namespace ProbGameOfCountingSimulator
                     textBox_answer.Text = "";
                     think(); // к следующему примеру, если ответ верный
                 }
-                else game_over();
+                else
+                {
+                    game_over();
+                }
             }    
         }
 
         private void button_Click(object sender, EventArgs e) // обработка нажатых кнопок скопом
         {
-            start(((Button)sender).Tag.ToString());
+            mode = ((Button)sender).Tag.ToString();
+
+            if (((Button)sender).Tag.ToString().Equals("plus"))
+                plus = false;
+            else
+                if (((Button)sender).Tag.ToString().Equals("minus"))
+                minus = false;
+            else
+                if (((Button)sender).Tag.ToString().Equals("mult"))
+                mult = false;
+            else
+                if (((Button)sender).Tag.ToString().Equals("divs"))
+                divs = false;
+            start( ((Button)sender).Tag.ToString() );
         }
 
 

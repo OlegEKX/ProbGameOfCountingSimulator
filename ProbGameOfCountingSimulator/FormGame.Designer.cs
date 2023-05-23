@@ -43,6 +43,7 @@
             this.bt_divs = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_think
@@ -120,6 +121,7 @@
             this.bt_plus.Tag = "plus";
             this.bt_plus.Text = "Сложение";
             this.bt_plus.UseVisualStyleBackColor = true;
+            this.bt_plus.Click += new System.EventHandler(this.button_Click);
             // 
             // bt_minus
             // 
@@ -131,6 +133,7 @@
             this.bt_minus.Tag = "minus";
             this.bt_minus.Text = "Вычитание";
             this.bt_minus.UseVisualStyleBackColor = true;
+            this.bt_minus.Click += new System.EventHandler(this.button_Click);
             // 
             // bt_mult
             // 
@@ -142,6 +145,7 @@
             this.bt_mult.Tag = "mult";
             this.bt_mult.Text = "Умножение";
             this.bt_mult.UseVisualStyleBackColor = true;
+            this.bt_mult.Click += new System.EventHandler(this.button_Click);
             // 
             // bt_divs
             // 
@@ -153,6 +157,7 @@
             this.bt_divs.Tag = "divs";
             this.bt_divs.Text = "Деление";
             this.bt_divs.UseVisualStyleBackColor = true;
+            this.bt_divs.Click += new System.EventHandler(this.button_Click);
             // 
             // timer
             // 
@@ -168,11 +173,22 @@
             this.progressBar.TabIndex = 14;
             this.progressBar.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(383, 95);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 19);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form_Schet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 208);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.bt_divs);
             this.Controls.Add(this.bt_mult);
@@ -209,6 +225,7 @@
         private System.Windows.Forms.Button bt_divs;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button button1;
     }
 }
 
