@@ -191,7 +191,7 @@ namespace ProbGameOfCountingSimulator
             if (result == "")
             {
 
-                MessageBox.Show(" ВВЕдит результат");
+                MessageBox.Show("Введите результат!");
             }
             else
             {
