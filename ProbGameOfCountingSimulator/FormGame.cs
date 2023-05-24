@@ -210,56 +210,6 @@ namespace ProbGameOfCountingSimulator
             }
         }
 
-        private void bt_plus_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            pBar_time.Increment(1);
-            lb_time.Text = "время решения " + i.ToString();
-            i++;
-
-            if (pBar_time.Value == pBar_time.Maximum) // как только достигнет максимума
-            {
-                t.Stop(); // останавливает проверку
-                timer.Stop(); // останавливает таймер
-            }
-
-            if (timer.Enabled == false)
-            {
-                MessageBox.Show("Не справился с задачей!" + t.Elapsed.ToString(), "Думай быстрее ");
-                game_over();
-            }
-
-
-
-        }
-
-
-
-        private void textBox_answer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) // если в текстовом поле был нажат Enter, то считаем пример
-            {
-                lb_popytka.Text = "Попытка " + count + " из " + count_max;
-                if (count <= count_max) progressBar.Value = count;
-                if (textBox_answer.Text == answer)
-                {
-                    if (count == count_max)
-                    {
-                        game_wins(); return;
-                    }
-                    textBox_answer.Text = "";
-                    think(); // к следующему примеру, если ответ верный
-                }
-                else
-                {
-                    game_over();
-                }
-            }    
-        }
 
         private void button_Click(object sender, EventArgs e) // обработка нажатых кнопок скопом
         {
@@ -280,6 +230,56 @@ namespace ProbGameOfCountingSimulator
         }
 
 
+        //private void textBox_answer_KeyDown(object sender, KeyEventArgs e)
+        //{
         
+
+
+        //    if (e.KeyCode == Keys.Enter) // если в текстовом поле был нажат Enter, то считаем пример
+        //    {
+        //        lb_popytka.Text = "Попытка " + count + " из " + count_max;
+        //        if (count <= count_max) progressBar.Value = count;
+        //        if (textBox_answer.Text == answer)
+        //        {
+        //            if (count == count_max)
+        //            {
+        //                game_wins(); return;
+        //            }
+        //            textBox_answer.Text = "";
+        //            think(); // к следующему примеру, если ответ верный
+        //        }
+        //        else
+        //        {
+        //            game_over();
+        //        }
+        //    }
+        //}
+
+        //private void bt_plus_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void timer_Tick(object sender, EventArgs e)
+        //{
+        //    pBar_time.Increment(1);
+        //    lb_time.Text = "время решения " + i.ToString();
+        //    i++;
+
+        //    if (pBar_time.Value == pBar_time.Maximum) // как только достигнет максимума
+        //    {
+        //        t.Stop(); // останавливает проверку
+        //        timer.Stop(); // останавливает таймер
+        //    }
+
+        //    if (timer.Enabled == false)
+        //    {
+        //        MessageBox.Show("Не справился с задачей!" + t.Elapsed.ToString(), "Думай быстрее ");
+        //        game_over();
+        //    }
+
+
+
+        //}
     }
 }
