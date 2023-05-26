@@ -39,11 +39,13 @@
             this.bt_mult = new System.Windows.Forms.Button();
             this.bt_divs = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.rules = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_think
             // 
             this.label_think.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label_think.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_think.Location = new System.Drawing.Point(12, 40);
             this.label_think.Name = "label_think";
             this.label_think.Size = new System.Drawing.Size(286, 66);
@@ -144,11 +146,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // rules
+            // 
+            this.rules.Location = new System.Drawing.Point(16, 119);
+            this.rules.Name = "rules";
+            this.rules.Size = new System.Drawing.Size(61, 23);
+            this.rules.TabIndex = 16;
+            this.rules.Text = "Правила";
+            this.rules.UseVisualStyleBackColor = true;
+            this.rules.Click += new System.EventHandler(this.rules_Click);
+            // 
             // Form_Schet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 208);
+            this.Controls.Add(this.rules);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bt_divs);
             this.Controls.Add(this.bt_mult);
@@ -182,6 +195,7 @@
         private System.Windows.Forms.Button bt_mult;
         private System.Windows.Forms.Button bt_divs;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button rules;
     }
 }
 

@@ -45,6 +45,7 @@ namespace ProbGameOfCountingSimulator
             //pBar_time.Value = 0; // 30 секунд максимум
             lb_popytka.Visible = true;
             count = 0;
+            rules.Visible = false;
 
 
             mode = my_mode;
@@ -173,6 +174,11 @@ namespace ProbGameOfCountingSimulator
                 
             //t.Stop();
 
+        }
+
+        private void rules_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Правила, напишу позже");
         }
 
         private void game_wins()
