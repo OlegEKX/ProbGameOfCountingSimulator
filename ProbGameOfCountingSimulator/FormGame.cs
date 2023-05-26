@@ -33,7 +33,7 @@ namespace ProbGameOfCountingSimulator
         {
             InitializeComponent();
             tBox_level.Text = maxNumber.ToString();
-            timer.Interval = 1000; // 1 секунда
+            //timer.Interval = 1000; // 1 секунда
             
         }
 
@@ -41,8 +41,8 @@ namespace ProbGameOfCountingSimulator
         
         private void start(string my_mode)
         {
-            pBar_time.Visible = true;
-            pBar_time.Value = 0; // 30 секунд максимум
+            //pBar_time.Visible = true;
+            //pBar_time.Value = 0; // 30 секунд максимум
             lb_popytka.Visible = true;
             count = 0;
 
@@ -92,9 +92,9 @@ namespace ProbGameOfCountingSimulator
 
                 //на время запускаем счетчик
 
-                timer.Start();
+                //timer.Start();
                 //t.Start();
-                pBar_time.Value = 0;
+                //pBar_time.Value = 0;
 
 
 
@@ -146,10 +146,10 @@ namespace ProbGameOfCountingSimulator
             lb_popytka.Visible = false;
             label_think.Enabled = false;
             textBox_answer.Enabled = false;
-            pBar_time.Visible = false;
+            //pBar_time.Visible = false;
             //progressBar.Visible = false;
             bt_plus.Focus(); // передаем фокус на кнопку игры
-            //count = 0;
+            count = 0;
             rightAnswer = 0;
 
             // возвращаем кнопки на панель согласно условию
@@ -159,15 +159,17 @@ namespace ProbGameOfCountingSimulator
             bt_minus.Visible = true;
             bt_mult.Visible = true;
             bt_divs.Visible = true;
+            button1.Visible = true;
 
             bt_plus.Enabled = plus;
             bt_minus.Enabled = minus;
             bt_mult.Enabled = mult;
             bt_divs.Enabled = divs;
+
             if (!plus && !minus && !mult && !divs)
             {
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
-
+                button1.Visible = false;
             }
                 
             //t.Stop();
@@ -187,6 +189,10 @@ namespace ProbGameOfCountingSimulator
             if (mode == "minus") minus = false;
             if (mode == "mult") mult = false;
             if (mode == "divs") divs = false;
+            if (!plus && !minus && !mult && !divs)
+            {
+                MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
+            }
             done();
         }
 
@@ -206,7 +212,7 @@ namespace ProbGameOfCountingSimulator
                     count++;
                     //MessageBox.Show("Верно");
                     rightAnswer++;
-                    
+                    lb_popytka.Text = "Попытка " + count + " из " + count_max;
                 }
                 else
                 {
@@ -214,7 +220,7 @@ namespace ProbGameOfCountingSimulator
                     MessageBox.Show($"Попробуй ещё раз, количество неправильных ответов: {wrongAnswer}");
                     //MessageBox.Show(" НЕ Верно");
                 }
-                //count++;
+                //count++; уже не нужно
                 think();
             }
         }

@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Schet));
             this.label_think = new System.Windows.Forms.Label();
             this.textBox_answer = new System.Windows.Forms.TextBox();
-            this.pBar_time = new System.Windows.Forms.ProgressBar();
-            this.lb_time = new System.Windows.Forms.Label();
             this.lb_popytka = new System.Windows.Forms.Label();
             this.tBox_level = new System.Windows.Forms.TextBox();
             this.label_slozhost = new System.Windows.Forms.Label();
@@ -41,7 +38,6 @@
             this.bt_minus = new System.Windows.Forms.Button();
             this.bt_mult = new System.Windows.Forms.Button();
             this.bt_divs = new System.Windows.Forms.Button();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -62,32 +58,12 @@
             this.textBox_answer.Size = new System.Drawing.Size(293, 49);
             this.textBox_answer.TabIndex = 1;
             // 
-            // pBar_time
-            // 
-            this.pBar_time.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pBar_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.pBar_time.Location = new System.Drawing.Point(12, 113);
-            this.pBar_time.Maximum = 30;
-            this.pBar_time.Name = "pBar_time";
-            this.pBar_time.Size = new System.Drawing.Size(584, 23);
-            this.pBar_time.TabIndex = 9;
-            this.pBar_time.Tag = "progressBar";
-            // 
-            // lb_time
-            // 
-            this.lb_time.AutoSize = true;
-            this.lb_time.Location = new System.Drawing.Point(285, 113);
-            this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(30, 13);
-            this.lb_time.TabIndex = 11;
-            this.lb_time.Text = "Time";
-            this.lb_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lb_popytka
             // 
+            this.lb_popytka.AutoSize = true;
             this.lb_popytka.Location = new System.Drawing.Point(13, 18);
             this.lb_popytka.Name = "lb_popytka";
-            this.lb_popytka.Size = new System.Drawing.Size(55, 13);
+            this.lb_popytka.Size = new System.Drawing.Size(50, 13);
             this.lb_popytka.TabIndex = 12;
             this.lb_popytka.Text = "попытка";
             // 
@@ -112,7 +88,7 @@
             // bt_plus
             // 
             this.bt_plus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bt_plus.Location = new System.Drawing.Point(13, 148);
+            this.bt_plus.Location = new System.Drawing.Point(12, 148);
             this.bt_plus.Name = "bt_plus";
             this.bt_plus.Size = new System.Drawing.Size(142, 35);
             this.bt_plus.TabIndex = 2;
@@ -157,18 +133,14 @@
             this.bt_divs.UseVisualStyleBackColor = true;
             this.bt_divs.Click += new System.EventHandler(this.button_Click);
             // 
-            // timer
-            // 
-            this.timer.Enabled = true;
-            this.timer.Interval = 1000;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(383, 95);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 19);
             this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
+            this.button1.Tag = "SolutionButton";
+            this.button1.Text = "Ответить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -185,11 +157,11 @@
             this.Controls.Add(this.label_slozhost);
             this.Controls.Add(this.tBox_level);
             this.Controls.Add(this.lb_popytka);
-            this.Controls.Add(this.lb_time);
-            this.Controls.Add(this.pBar_time);
             this.Controls.Add(this.textBox_answer);
             this.Controls.Add(this.label_think);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(625, 247);
+            this.MinimumSize = new System.Drawing.Size(625, 247);
             this.Name = "Form_Schet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Тренажер устного счета";
@@ -202,8 +174,6 @@
 
         private System.Windows.Forms.Label label_think;
         private System.Windows.Forms.TextBox textBox_answer;
-        private System.Windows.Forms.ProgressBar pBar_time;
-        private System.Windows.Forms.Label lb_time;
         private System.Windows.Forms.Label lb_popytka;
         private System.Windows.Forms.TextBox tBox_level;
         private System.Windows.Forms.Label label_slozhost;
@@ -211,7 +181,6 @@
         private System.Windows.Forms.Button bt_minus;
         private System.Windows.Forms.Button bt_mult;
         private System.Windows.Forms.Button bt_divs;
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button button1;
     }
 }
