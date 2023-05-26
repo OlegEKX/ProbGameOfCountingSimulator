@@ -73,7 +73,6 @@
             this.pBar_time.Size = new System.Drawing.Size(584, 23);
             this.pBar_time.TabIndex = 9;
             this.pBar_time.Tag = "progressBar";
-            this.pBar_time.Visible = false;
             // 
             // lb_time
             // 
@@ -162,6 +161,7 @@
             // timer
             // 
             this.timer.Enabled = true;
+            this.timer.Interval = 1000;
             // 
             // progressBar
             // 

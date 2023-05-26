@@ -13,12 +13,13 @@ namespace ProbGameOfCountingSimulator
 {
     public partial class Form_Schet : Form
     {
-        System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
+        //System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
         int rightAnswer = 0;
+        int wrongAnswer = 0;
         int count = 0; //количество попыток
-        int min = 1;
+        int minNumber = 1;
         int i = 0; //для отображения секунд на форме
-        int max = 10; //уровень сложности задачи 10 - двухзначные числа, 100 - трехзначные числа
+        int maxNumber = 10; //уровень сложности задачи 10 - двухзначные числа, 100 - трехзначные числа
         Random rnd = new Random();
         string answer;
         int count_max = 3; // для прогресс бара максимальное количество попыток
@@ -31,7 +32,7 @@ namespace ProbGameOfCountingSimulator
         public Form_Schet()
         {
             InitializeComponent();
-            tBox_level.Text = max.ToString();
+            tBox_level.Text = maxNumber.ToString();
             timer.Interval = 1000; // 1 секунда
             
         }
@@ -68,12 +69,12 @@ namespace ProbGameOfCountingSimulator
             // элементы try и catch - исключения, при выполнении этого блока, сначала выполняется действие в try, если исключение появится, то программа перейдет к действиям находящимся в catch
             try
             {
-                max = Convert.ToInt16(tBox_level.Text);
+                maxNumber = Convert.ToInt16(tBox_level.Text);
             }
             catch
             {
-                max = 10;
-                tBox_level.Text = max.ToString();
+                maxNumber = 10;
+                tBox_level.Text = maxNumber.ToString();
             }
             think();
         }
@@ -82,17 +83,17 @@ namespace ProbGameOfCountingSimulator
         {
             textBox_answer.Text = "";
             textBox_answer.Focus();
-            if (count < count_max)
+            if (rightAnswer < count_max)
             {
                 int a, b;
                 i = 0;
-                a = rnd.Next(min, max + 1);
-                b = rnd.Next(min, max + 1);
+                a = rnd.Next(minNumber, maxNumber + 1);
+                b = rnd.Next(minNumber, maxNumber + 1);
 
                 //на время запускаем счетчик
 
                 timer.Start();
-                t.Start();
+                //t.Start();
                 pBar_time.Value = 0;
 
 
@@ -164,7 +165,7 @@ namespace ProbGameOfCountingSimulator
             bt_divs.Enabled = divs;
             if (!plus && !minus && !mult && !divs)
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
-            t.Stop();
+            //t.Stop();
 
         }
 
@@ -197,15 +198,18 @@ namespace ProbGameOfCountingSimulator
             {
                 if (answer == result)
                 {
+                    count++;
                     //MessageBox.Show("Верно");
                     rightAnswer++;
-
+                    
                 }
                 else
                 {
+                    wrongAnswer++;
+                    MessageBox.Show($"Попробуй ещё раз, количество неправильных ответов: {wrongAnswer}");
                     //MessageBox.Show(" НЕ Верно");
                 }
-                count++;
+                //count++;
                 think();
             }
         }
