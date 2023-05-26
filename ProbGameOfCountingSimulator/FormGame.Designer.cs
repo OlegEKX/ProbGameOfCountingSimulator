@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Schet));
             this.label_think = new System.Windows.Forms.Label();
             this.textBox_answer = new System.Windows.Forms.TextBox();
@@ -40,6 +41,8 @@
             this.bt_divs = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rules = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.labelTimer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_think
@@ -156,11 +159,26 @@
             this.rules.UseVisualStyleBackColor = true;
             this.rules.Click += new System.EventHandler(this.rules_Click);
             // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(119, 18);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(107, 13);
+            this.labelTimer.TabIndex = 17;
+            this.labelTimer.Text = "Затраченное время";
+            // 
             // Form_Schet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 208);
+            this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.rules);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bt_divs);
@@ -196,6 +214,8 @@
         private System.Windows.Forms.Button bt_divs;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button rules;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label labelTimer;
     }
 }
 

@@ -14,6 +14,7 @@ namespace ProbGameOfCountingSimulator
     public partial class Form_Schet : Form
     {
         //System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
+        int timeForTimer = 0;
         int rightAnswer = 0;
         int wrongAnswer = 0;
         int count = 0; //количество попыток
@@ -81,6 +82,7 @@ namespace ProbGameOfCountingSimulator
 
         private void think()
         {
+            timer.Enabled = true;
             textBox_answer.Text = "";
             textBox_answer.Focus();
             if (rightAnswer < count_max)
@@ -131,6 +133,8 @@ namespace ProbGameOfCountingSimulator
             }
             else
             {
+                timeForTimer = 0;
+                timer.Stop();
                 done();
             }
 
@@ -179,6 +183,12 @@ namespace ProbGameOfCountingSimulator
         private void rules_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Правила, напишу позже");
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            timeForTimer++;
+            labelTimer.Text = $"Затрачено времени: {timeForTimer.ToString()} сек.";
         }
 
         private void game_wins()
