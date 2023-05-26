@@ -42,7 +42,6 @@
             this.bt_mult = new System.Windows.Forms.Button();
             this.bt_divs = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -163,16 +162,6 @@
             this.timer.Enabled = true;
             this.timer.Interval = 1000;
             // 
-            // progressBar
-            // 
-            this.progressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.progressBar.Location = new System.Drawing.Point(12, 189);
-            this.progressBar.Maximum = 30;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(583, 10);
-            this.progressBar.TabIndex = 14;
-            this.progressBar.Visible = false;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(383, 95);
@@ -189,7 +178,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(609, 208);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.bt_divs);
             this.Controls.Add(this.bt_mult);
             this.Controls.Add(this.bt_minus);
@@ -224,7 +212,6 @@
         private System.Windows.Forms.Button bt_mult;
         private System.Windows.Forms.Button bt_divs;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button button1;
     }
 }

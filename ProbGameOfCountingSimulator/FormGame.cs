@@ -55,13 +55,13 @@ namespace ProbGameOfCountingSimulator
             bt_mult.Visible = false;
             bt_divs.Visible = false;
 
-            progressBar.Visible = true;
+            //progressBar.Visible = true;
             textBox_answer.Enabled = true;
             label_think.Enabled = true;
             textBox_answer.Focus();
-            progressBar.Minimum = 0;
-            progressBar.Maximum = count_max;
-            progressBar.Value = 0;
+            //progressBar.Minimum = 0;
+            //progressBar.Maximum = count_max;
+            //progressBar.Value = 0;
             textBox_answer.Text = "";
             label_think.Text = "";
             lb_popytka.Text = "Попытка " + count + " из " + count_max;
@@ -147,9 +147,10 @@ namespace ProbGameOfCountingSimulator
             label_think.Enabled = false;
             textBox_answer.Enabled = false;
             pBar_time.Visible = false;
-            progressBar.Visible = false;
+            //progressBar.Visible = false;
             bt_plus.Focus(); // передаем фокус на кнопку игры
-            count = 0;
+            //count = 0;
+            rightAnswer = 0;
 
             // возвращаем кнопки на панель согласно условию
             // если какое-то задание выполнено, кнопка становится неактивной
@@ -164,7 +165,11 @@ namespace ProbGameOfCountingSimulator
             bt_mult.Enabled = mult;
             bt_divs.Enabled = divs;
             if (!plus && !minus && !mult && !divs)
+            {
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
+
+            }
+                
             //t.Stop();
 
         }
