@@ -47,7 +47,6 @@ namespace ProbGameOfCountingSimulator
             count = 0;
 
 
-
             mode = my_mode;
             //убираем все кнопки на время игры
             bt_plus.Visible = false;
