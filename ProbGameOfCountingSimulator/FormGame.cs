@@ -15,7 +15,7 @@ namespace ProbGameOfCountingSimulator
     {
         //System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
         int minuteTimeForTimer = 0;
-        int timeForTimer = 55;
+        int timeForTimer = 0;
         int rightAnswer = 0;
         int wrongAnswer = 0;
         int count = 0; //количество попыток
