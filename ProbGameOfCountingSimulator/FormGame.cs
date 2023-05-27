@@ -174,21 +174,7 @@ namespace ProbGameOfCountingSimulator
 
         }
 
-        private void game_wins()
-        {
-            int x = rnd.Next(1, 4); // случайное сообщение, всплывающее при прохождении уровня
-            if (x == 1) MessageBox.Show("Считаешь верно!!!", "А ты молодец. Математик!");
-            if (x == 2) MessageBox.Show("Верно!!!", "А ты молодец. Математик!");
-            if (x == 3) MessageBox.Show("Ответ принят!!!", "А ты молодец. Математик!");
-            if (x == 4) MessageBox.Show("У тебя все получается!!!", "А ты молодец. Математик!");
 
-            // если все посчитали верно кнопка становится недоступна
-            if (mode == "plus") plus = false;
-            if (mode == "minus") minus = false;
-            if (mode == "mult") mult = false;
-            if (mode == "divs") divs = false;
-            done();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
