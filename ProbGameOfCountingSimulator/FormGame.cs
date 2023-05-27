@@ -14,7 +14,8 @@ namespace ProbGameOfCountingSimulator
     public partial class Form_Schet : Form
     {
         //System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
-        int timeForTimer = 0;
+        int minuteTimeForTimer = 0;
+        int timeForTimer = 55;
         int rightAnswer = 0;
         int wrongAnswer = 0;
         int count = 0; //количество попыток
@@ -134,6 +135,7 @@ namespace ProbGameOfCountingSimulator
             }
             else
             {
+                minuteTimeForTimer = 0;
                 timeForTimer = 0;
                 timer.Stop();
                 done();
@@ -196,8 +198,27 @@ namespace ProbGameOfCountingSimulator
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            timeForTimer++;
-            labelTimer.Text = $"Затрачено времени: {timeForTimer.ToString()} сек.";
+            //ДОБАВИТЬ МИНУТНОЕ ПРЕДСТАВЛЕНИЕ путем добавления условия, где проверяется количество секунд таймера для секунд
+            //условие else будет обнулять секунды и добавлять одну минуту в минутный счетчик
+            if (timeForTimer < 60)
+            {
+                if (timeForTimer == 59)
+                {
+                    timeForTimer = 0;
+                    minuteTimeForTimer++;
+                    labelTimer.Text = $"Затрачено времени: {minuteTimeForTimer} мин. {timeForTimer.ToString()} сек.";
+                }
+                else
+                {
+                    timeForTimer++;
+                }
+                //timeForTimer++;
+                labelTimer.Text = $"Затрачено времени: {minuteTimeForTimer} мин. {timeForTimer.ToString()} сек.";
+            }
+            
+
+            //timeForTimer++;
+            //labelTimer.Text = $"Затрачено времени: {timeForTimer.ToString()} сек.";
         }
 
         
