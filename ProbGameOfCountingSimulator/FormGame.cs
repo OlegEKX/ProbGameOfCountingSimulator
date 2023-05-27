@@ -42,6 +42,7 @@ namespace ProbGameOfCountingSimulator
         
         private void start(string my_mode)
         {
+            
             //pBar_time.Visible = true;
             //pBar_time.Value = 0; // 30 секунд максимум
             lb_popytka.Visible = true;
@@ -174,6 +175,7 @@ namespace ProbGameOfCountingSimulator
             {
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
                 button1.Visible = false;
+                
             }
                 
             //t.Stop();
@@ -182,7 +184,14 @@ namespace ProbGameOfCountingSimulator
 
         private void rules_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Правила, напишу позже");
+            MessageBox.Show($"«Инструкция по тренажеру устного счета» \n\n" +
+                $"✪ Вам дается возможность поочередно выбирать режими счета\n\n" +
+                $"✪ В правом верхнем углу можно настроить сложность примеров, указав число, в пределах которого будут генерироваться числа для примеров\n\n" +
+                $"✪ При нажатии на одну из кнопок режима, активируется таймер, благодаря которому вы сможете отслеживать время на решение трех примеров\n\n" +
+                $"✪ Левее от таймера можно отслеживать количество решенных примеров\n\n" +
+                $"✪ В левом окне появляется пример, с действием выбранным ранее\n\n" +
+                $"✪ В правом окне необходимо ввести ответ\n\n" +
+                $"✪ После ввода ответа, с помощью левой кнопки мыши нажмите на кнопку ответить\n\n",$"Правила");
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -190,6 +199,8 @@ namespace ProbGameOfCountingSimulator
             timeForTimer++;
             labelTimer.Text = $"Затрачено времени: {timeForTimer.ToString()} сек.";
         }
+
+        
 
         private void game_wins()
         {
