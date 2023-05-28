@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ProbGameOfCountingSimulator
 {
-    public partial class Form_Schet : Form
+    public partial class FormShet : Form
     {
         int minuteTimeForTimer = 0;
         int timeForTimer = 0;
@@ -22,52 +22,52 @@ namespace ProbGameOfCountingSimulator
         int maxNumber = 10; //уровень сложности задачи 10 - двухзначные числа, 100 - трехзначные числа
         Random rnd = new Random();
         string answer;
-        int count_max = 3; // для прогресс бара максимальное количество попыток
+        int countMax = 3; // для прогресс бара максимальное количество попыток
         string mode = ""; // режим, что будет выполняться: сложение, вычитание, деление
         bool plus = true,
             minus = true,
             mult = true,
             divs = true;
 
-        public Form_Schet()
+        public FormShet()
         {
             InitializeComponent();
-            tBox_level.Text = maxNumber.ToString();
+            textBoxLevel.Text = maxNumber.ToString();
             //timer.Interval = 1000; // 1 секунда
             
         }
 
         
         
-        private void start(string my_mode)
+        private void start(string myMode)
         {
-            lb_popytka.Visible = true;
+            labelTry.Visible = true;
             count = 0;
             rules.Visible = false;
 
-            mode = my_mode;
+            mode = myMode;
             //убираем все кнопки на время игры
-            bt_plus.Visible = false;
-            bt_minus.Visible = false;
-            bt_mult.Visible = false;
-            bt_divs.Visible = false;
+            buttonPlus.Visible = false;
+            buttonMinus.Visible = false;
+            buttonMult.Visible = false;
+            buttonDivs.Visible = false;
 
-            textBox_answer.Enabled = true;
-            label_think.Enabled = true;
-            textBox_answer.Focus();
-            textBox_answer.Text = "";
-            label_think.Text = "";
-            lb_popytka.Text = "Попытка " + count + " из " + count_max;
+            textBoxAnswer.Enabled = true;
+            labelThink.Enabled = true;
+            textBoxAnswer.Focus();
+            textBoxAnswer.Text = "";
+            labelThink.Text = "";
+            labelTry.Text = "Попытка " + count + " из " + countMax;
 
             // элементы try и catch - исключения, при выполнении этого блока, сначала выполняется действие в try, если исключение появится, то программа перейдет к действиям находящимся в catch
             try
             {
-                maxNumber = Convert.ToInt16(tBox_level.Text);
+                maxNumber = Convert.ToInt16(textBoxLevel.Text);
             }
             catch
             {
                 maxNumber = 10;
-                tBox_level.Text = maxNumber.ToString();
+                textBoxLevel.Text = maxNumber.ToString();
             }
             think();
         }
@@ -75,9 +75,9 @@ namespace ProbGameOfCountingSimulator
         private void think()
         {
             timer.Enabled = true;
-            textBox_answer.Text = "";
-            textBox_answer.Focus();
-            if (rightAnswer < count_max)
+            textBoxAnswer.Text = "";
+            textBoxAnswer.Focus();
+            if (rightAnswer < countMax)
             {
                 int a, b;
                 a = rnd.Next(minNumber, maxNumber + 1);
@@ -85,7 +85,7 @@ namespace ProbGameOfCountingSimulator
 
                 if (mode == "plus")
                 {
-                    label_think.Text = a.ToString() + " + " + b.ToString() + " = ";
+                    labelThink.Text = a.ToString() + " + " + b.ToString() + " = ";
                     answer = (a + b).ToString();
                 }
 
@@ -97,19 +97,19 @@ namespace ProbGameOfCountingSimulator
                         a = b;
                         b = x;
                     }
-                    label_think.Text = a.ToString() + " - " + b.ToString() + " = "; // - = ALT+0150 на цифровой
+                    labelThink.Text = a.ToString() + " - " + b.ToString() + " = "; // - = ALT+0150 на цифровой
                     answer = (a - b).ToString();
                 }
 
                 if (mode == "mult")
                 {
-                    label_think.Text = a.ToString() + " * " + b.ToString() + " = ";
+                    labelThink.Text = a.ToString() + " * " + b.ToString() + " = ";
                     answer = (a * b).ToString();
                 }
                 if (mode == "divs")
                 {
                     // можно так выпендриться, чтобы не использовать целочисленное деление
-                    label_think.Text = (a * b).ToString() + " ; " + b.ToString() + " = ";
+                    labelThink.Text = (a * b).ToString() + " ; " + b.ToString() + " = ";
                     answer = a.ToString();
                 }
             }
@@ -124,31 +124,31 @@ namespace ProbGameOfCountingSimulator
 
         private void done()
         {
-            lb_popytka.Visible = false;
-            label_think.Enabled = false;
-            textBox_answer.Enabled = false;
-            bt_plus.Focus(); // передаем фокус на кнопку игры
+            labelTry.Visible = false;
+            labelThink.Enabled = false;
+            textBoxAnswer.Enabled = false;
+            buttonPlus.Focus(); // передаем фокус на кнопку игры
             count = 0;
             rightAnswer = 0;
 
             // возвращаем кнопки на панель согласно условию
             // если какое-то задание выполнено, кнопка становится неактивной
             // убираем все кнопки на время игры
-            bt_plus.Visible = true;
-            bt_minus.Visible = true;
-            bt_mult.Visible = true;
-            bt_divs.Visible = true;
-            button1.Visible = true;
+            buttonPlus.Visible = true;
+            buttonMinus.Visible = true;
+            buttonMult.Visible = true;
+            buttonDivs.Visible = true;
+            buttonAnswer.Visible = true;
 
-            bt_plus.Enabled = plus;
-            bt_minus.Enabled = minus;
-            bt_mult.Enabled = mult;
-            bt_divs.Enabled = divs;
+            buttonPlus.Enabled = plus;
+            buttonMinus.Enabled = minus;
+            buttonMult.Enabled = mult;
+            buttonDivs.Enabled = divs;
 
             if (!plus && !minus && !mult && !divs)
             {
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
-                button1.Visible = false;
+                buttonAnswer.Visible = false;
             }
         }
 
@@ -184,8 +184,8 @@ namespace ProbGameOfCountingSimulator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox_answer.Focus();
-            string result = textBox_answer.Text;
+            textBoxAnswer.Focus();
+            string result = textBoxAnswer.Text;
             if (result == "")
             {
                 MessageBox.Show("Введите результат!");
@@ -196,7 +196,7 @@ namespace ProbGameOfCountingSimulator
                 {
                     count++;
                     rightAnswer++;
-                    lb_popytka.Text = "Попытка " + count + " из " + count_max;
+                    labelTry.Text = "Попытка " + count + " из " + countMax;
                 }
                 else
                 {

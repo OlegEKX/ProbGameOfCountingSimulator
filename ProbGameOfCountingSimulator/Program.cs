@@ -16,7 +16,7 @@ namespace ProbGameOfCountingSimulator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Schet());
+            Application.Run(new FormShet());
         }
     }
 }
