@@ -13,14 +13,12 @@ namespace ProbGameOfCountingSimulator
 {
     public partial class Form_Schet : Form
     {
-        //System.Diagnostics.Stopwatch t = new System.Diagnostics.Stopwatch();
         int minuteTimeForTimer = 0;
         int timeForTimer = 0;
         int rightAnswer = 0;
         int wrongAnswer = 0;
         int count = 0; //количество попыток
         int minNumber = 1;
-        int i = 0; //для отображения секунд на форме
         int maxNumber = 10; //уровень сложности задачи 10 - двухзначные числа, 100 - трехзначные числа
         Random rnd = new Random();
         string answer;
@@ -43,13 +41,9 @@ namespace ProbGameOfCountingSimulator
         
         private void start(string my_mode)
         {
-            
-            //pBar_time.Visible = true;
-            //pBar_time.Value = 0; // 30 секунд максимум
             lb_popytka.Visible = true;
             count = 0;
             rules.Visible = false;
-
 
             mode = my_mode;
             //убираем все кнопки на время игры
@@ -58,13 +52,9 @@ namespace ProbGameOfCountingSimulator
             bt_mult.Visible = false;
             bt_divs.Visible = false;
 
-            //progressBar.Visible = true;
             textBox_answer.Enabled = true;
             label_think.Enabled = true;
             textBox_answer.Focus();
-            //progressBar.Minimum = 0;
-            //progressBar.Maximum = count_max;
-            //progressBar.Value = 0;
             textBox_answer.Text = "";
             label_think.Text = "";
             lb_popytka.Text = "Попытка " + count + " из " + count_max;
@@ -90,17 +80,8 @@ namespace ProbGameOfCountingSimulator
             if (rightAnswer < count_max)
             {
                 int a, b;
-                i = 0;
                 a = rnd.Next(minNumber, maxNumber + 1);
                 b = rnd.Next(minNumber, maxNumber + 1);
-
-                //на время запускаем счетчик
-
-                //timer.Start();
-                //t.Start();
-                //pBar_time.Value = 0;
-
-
 
                 if (mode == "plus")
                 {
@@ -131,7 +112,6 @@ namespace ProbGameOfCountingSimulator
                     label_think.Text = (a * b).ToString() + " ; " + b.ToString() + " = ";
                     answer = a.ToString();
                 }
-                
             }
             else
             {
@@ -140,12 +120,6 @@ namespace ProbGameOfCountingSimulator
                 timer.Stop();
                 done();
             }
-
-        }
-        private void game_over()
-        {
-            textBox_answer.Text = "Нет = " + answer;
-            done();
         }
 
         private void done()
@@ -153,8 +127,6 @@ namespace ProbGameOfCountingSimulator
             lb_popytka.Visible = false;
             label_think.Enabled = false;
             textBox_answer.Enabled = false;
-            //pBar_time.Visible = false;
-            //progressBar.Visible = false;
             bt_plus.Focus(); // передаем фокус на кнопку игры
             count = 0;
             rightAnswer = 0;
@@ -177,11 +149,7 @@ namespace ProbGameOfCountingSimulator
             {
                 MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
                 button1.Visible = false;
-                
             }
-                
-            //t.Stop();
-
         }
 
         private void rules_Click(object sender, EventArgs e)
@@ -198,8 +166,6 @@ namespace ProbGameOfCountingSimulator
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            //ДОБАВИТЬ МИНУТНОЕ ПРЕДСТАВЛЕНИЕ путем добавления условия, где проверяется количество секунд таймера для секунд
-            //условие else будет обнулять секунды и добавлять одну минуту в минутный счетчик
             if (timeForTimer < 60)
             {
                 if (timeForTimer == 59)
@@ -212,35 +178,8 @@ namespace ProbGameOfCountingSimulator
                 {
                     timeForTimer++;
                 }
-                //timeForTimer++;
                 labelTimer.Text = $"Затрачено времени: {minuteTimeForTimer} мин. {timeForTimer.ToString()} сек.";
             }
-            
-
-            //timeForTimer++;
-            //labelTimer.Text = $"Затрачено времени: {timeForTimer.ToString()} сек.";
-        }
-
-        
-
-        private void game_wins()
-        {
-            int x = rnd.Next(1, 4); // случайное сообщение, всплывающее при прохождении уровня
-            if (x == 1) MessageBox.Show("Считаешь верно!!!", "А ты молодец. Математик!");
-            if (x == 2) MessageBox.Show("Верно!!!", "А ты молодец. Математик!");
-            if (x == 3) MessageBox.Show("Ответ принят!!!", "А ты молодец. Математик!");
-            if (x == 4) MessageBox.Show("У тебя все получается!!!", "А ты молодец. Математик!");
-
-            // если все посчитали верно кнопка становится недоступна
-            if (mode == "plus") plus = false;
-            if (mode == "minus") minus = false;
-            if (mode == "mult") mult = false;
-            if (mode == "divs") divs = false;
-            if (!plus && !minus && !mult && !divs)
-            {
-                MessageBox.Show("Ты прошел все уровни!", "Твоя победа и полное поражение компьютера");
-            }
-            done();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -249,7 +188,6 @@ namespace ProbGameOfCountingSimulator
             string result = textBox_answer.Text;
             if (result == "")
             {
-
                 MessageBox.Show("Введите результат!");
             }
             else
@@ -257,7 +195,6 @@ namespace ProbGameOfCountingSimulator
                 if (answer == result)
                 {
                     count++;
-                    //MessageBox.Show("Верно");
                     rightAnswer++;
                     lb_popytka.Text = "Попытка " + count + " из " + count_max;
                 }
@@ -265,9 +202,7 @@ namespace ProbGameOfCountingSimulator
                 {
                     wrongAnswer++;
                     MessageBox.Show($"Попробуй ещё раз, количество неправильных ответов: {wrongAnswer}");
-                    //MessageBox.Show(" НЕ Верно");
                 }
-                //count++; уже не нужно
                 think();
             }
         }
